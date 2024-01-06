@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Citas Famosas
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink] = "['/configuraciones']">
+        <ion-icon icon="settings-outline" slot="icon-only" />
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="random-quote-container" *ngIf="citaAleatoria; else loading" vertical="middle">
+    <p class="quote-text" vertical="middle">{{ citaAleatoria.texto }}</p>
+    <p class="quote-author" vertical="middle">{{ citaAleatoria.autor }}</p>
+  </div>
+  <ng-template #loading>
+    <p>Cargando cita...</p>
+  </ng-template>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/citas']">
+      <ion-icon name="add-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

@@ -1,0 +1,51 @@
+<div class="container">
+  <form (ngSubmit)="emitirCita()">
+    <ion-list>
+      <ion-item>
+        <ion-input
+          label="Cita"
+          [(ngModel)]="textoCita"
+          name="textoCita"
+          aria-label="Texto de la Cita"     
+          required 
+          minlength="5"
+          #textoCitaInput="ngModel"
+          placeholder="Escriba la cita">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-text 
+            [hidden]="textoCitaInput.valid || textoCitaInput.pristine"
+            color="danger">
+          ¡Escriba una cita de 5 o más letras!
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-input
+            label="Autor"
+            [(ngModel)]="autorCita"
+            name="autorCita"  
+            aria-label="Autor"   
+            required 
+            minlength="2"
+            #autorCitaInput="ngModel"
+            placeholder="Mahatma Gandhi">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-text 
+            [hidden]="autorCitaInput.valid || autorCitaInput.pristine"
+            color="danger">
+          ¡Escriba un autor de 2 o más letras!
+        </ion-text>
+      </ion-item>
+    </ion-list>
+    <ion-button 
+        type="submit"
+        [disabled]="!textoCitaInput.valid || !autorCitaInput.valid"
+        fill="clear">
+      AGREGAR +
+    </ion-button>
+  </form>
+</div>
+
